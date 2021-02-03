@@ -1,3 +1,6 @@
+//SPRINT- 4 EJERCICIO DE VALIDACIÓN DE FORMULARIOS
+// LEVEL 1 + 2
+
 // =======================================
 // ===  Validacion formulario Registro ===       
 // =======================================
@@ -28,8 +31,8 @@ function cargarProvincias() {
 
 // Rutina para agregar opciones a un <select> una vez le hemos pasados el array de elementos y el nombre en el DOM.
 function addOptions(domElement, array) {
-    const select = document.getElementsByName(domElement)[0];
-   
+    const select = document.getElementsByName(domElement)[0]; 
+   // Recorremos la array de <select> insertando los elementos del array como options
     for (value in array) {
      let option = document.createElement("option");
      option.text = array[value];
@@ -44,61 +47,66 @@ function addOptions(domElement, array) {
 
 // Validar Nombre
 nameF.addEventListener('input', (value) => {
+    //Comprobamos que el campo no esté vacío y el nombre tenga más de un carácter
     if (nameF.value.length <= 1) {
         nameF.classList.add('is-invalid');
         nameF.classList.remove('is-valid');
     } else {
         nameF.classList.replace('is-invalid', 'is-valid');
-    }
+    }//Asignamos la clase is-valid en función de si cumple o no la condición 
 })
 
-// Validar provincia - no se valida
+// Validar provincia - Escuchamos todos los cambios del select provincias
 provinciaF.addEventListener('change', () => {
+    //Comprobamos que el valor del option seleccionado es el de Selecciona una provincia.
     if (provinciaF.value === '0') {
         provinciaF.classList.add('is-invalid');
         provinciaF.classList.remove('is-valid');
     } else {
         provinciaF.classList.add('is-valid');
         provinciaF.classList.remove('is-invalid'); 
-    }
+    }//Asignamos la clase is-valid en función de si cumple o no la condición 
 }) 
 
 
 // Validar email
 emailF.addEventListener('input', (value) => {
+    //Comprobamos que no está vacío y llamamos a la función de validación de la biblioteca
     if ((emailF.value == '') | (validateEmail(emailF.value))) {
         emailF.classList.add('is-invalid');
         emailF.classList.remove('is-valid');
     } else {
         emailF.classList.replace('is-invalid', 'is-valid');
-    }
+    }//Asignamos la clase is-valid en función de si cumple o no la condición 
 })
 
 // Validar password ( 1 mayuscula, 1 minuscula, 1 numero y 8 char min.)
 passwordF.addEventListener('input', (value) => {
+    //Comprobamos que no está vacío y llamamos a la función de validación de la biblioteca
     if ((passwordF.value.length == '') | (validatePassword(passwordF.value))) {
         passwordF.classList.add('is-invalid');
         passwordF.classList.remove('is-valid');
     } else {
         passwordF.classList.replace('is-invalid', 'is-valid');
-    }
+    }//Asignamos la clase is-valid en función de si cumple o no la condición 
 })
 
 // Validar confirmación password
-rPasswordF.addEventListener('change', (value) => {
+rPasswordF.addEventListener('input', (value) => {
+    //Comprovamos que el password sea idéntico al introducido con anterioridad
     if (rPasswordF.value != passwordF.value) {
         rPasswordF.classList.add('is-invalid');
         rPasswordF.classList.remove('is-valid');
     } else {
         rPasswordF.classList.replace('is-invalid', 'is-valid');
-    }
+    }//Asignamos la clase is-valid en función de si cumple o no la condición 
 })
 
 
 
 // Botón Submit - Registrar
 // =========================
-function validateRegister(event) {    
+function validateRegister(event) {  //Comprobar que todos los campos tienen la clase is-valid  
     if (nameF.classList.contains('is-valid') &&
         provinciaF.classList.contains('is-valid') &&
         emailF.classList.contains('is-valid')  &&
@@ -126,7 +134,8 @@ const passwordL = document.getElementById('loginPassword');
 
 // Validar email
 emailL.addEventListener('input', (value) => {
-    if ((emailL.value == '') | (validateEmail(emailL.value))) { //Llamamos a la funcion validateEmail()  de la libreria
+    //Llamamos a la funcion validateEmail()  de la libreria
+    if ((emailL.value == '') | (validateEmail(emailL.value))) { 
         emailL.classList.add('is-invalid');
         emailL.classList.remove('is-valid');
     } else {
@@ -137,7 +146,8 @@ emailL.addEventListener('input', (value) => {
 
 // Validar password ( 1 mayuscula, 1 minuscula, 1 numero y 8 char min.)
 passwordL.addEventListener('input', (value) => {
-    if ((passwordL.value == '') | (validatePassword(passwordL.value))) { //Se comprueba que el campo no este vacio.
+    //Comprobar que no esté vacío y validar con la función validatePassword de la biblioteca
+    if ((passwordL.value == '') | (validatePassword(passwordL.value))) { 
     passwordL.classList.add('is-invalid');
     passwordL.classList.remove('is-valid');
     } else {
@@ -147,7 +157,8 @@ passwordL.addEventListener('input', (value) => {
 
 // Botón Submit - Login
 // =========================
-function validateLogin(){  
+function validateLogin(){ 
+    //Comprobamos que los campos tengan la clase is-valid para hacer el submit 
     if (emailL.classList.contains('is-valid')  &&
         passwordL.classList.contains('is-valid')) {
 
@@ -177,6 +188,7 @@ buscarB.addEventListener('input', (value) => {
 // Boton Submit - Buscar
 // =====================
 function validateBuscar(){
+    //Comprobamos que los campos tengan la clase is-valid para hacer el submit 
     if (buscarB.classList.contains('is-valid')) {
     }
     else { 
@@ -202,6 +214,10 @@ const validateEmail = (email) => {
     }
     return invalid; //Devolvemos true o false si cumple o no la validación.
 }
+
+// ===================== 
+//       LEVEL 2
+// ===================== 
 //Password - Utilizamos expresiones regulares para obligar a que el password sea más seguro.
 const validatePassword = (password) => {
     //Debe tener 1 mayúscula, 1 minúscula, 1 número y 8 carácteres cómo mínimo.
