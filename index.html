@@ -45,7 +45,10 @@
                             <li class="nav-item"><a class="nav-link" href="#">TAZAS</a></li>
                             <li class="nav-item"><a class="nav-link" href="#">CARRITO</a></li>  
                         </ul>
-                        <form class="form-inline my-2 my-lg-0" onsubmit="return validateBuscar()"> <input class="form-control mr-sm-2" type="text" placeholder="Encuentra tu taza!" id="buscarB"> 
+
+<!------------ Formulario de busqueda  ------------->
+
+                        <form class="form-inline my-2 my-lg-0" method="POST" action="./alta.html" onsubmit="return validateBuscar()"> <input class="form-control mr-sm-2" type="text" placeholder="Encuentra tu taza!" id="buscarB"> 
                             <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button> 
                         </form>   
                     </div>
@@ -63,7 +66,9 @@
                     </div>
                 </nav>
             </div>
-            <!---------------------- Ventana Modal de Registro ---------------->
+
+<!---------------------- Ventana Modal Formulario de Registro ---------------->
+
             <div class="modal fade" id="registrar">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -151,7 +156,9 @@
                   </div>
                 </div>
             </div>
-            <!---------------------- Ventana Modal de Login ---------------->
+
+<!---------------------- Ventana Modal del Formulario de  Login --------------------->
+
             <div class="modal fade" id="login">
                 <div class="modal-dialog">
                   <div class="modal-content">

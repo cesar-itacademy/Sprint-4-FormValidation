@@ -1,3 +1,6 @@
+//SPRINT- 4 EJERCICIO DE VALIDACIÓN DE FORMULARIOS
+// LEVEL 1 + 2
+
 // =======================================
 // ===  Validacion formulario Registro ===       
 // =======================================
@@ -28,8 +31,7 @@ function cargarProvincias() {
 
 // Rutina para agregar opciones a un <select> una vez le hemos pasados el array de elementos y el nombre en el DOM.
 function addOptions(domElement, array) {
-    const select = document.getElementsByName(domElement)[0];
-   
+    const select = document.getElementsByName(domElement)[0]; 
     for (value in array) {
      let option = document.createElement("option");
      option.text = array[value];
@@ -49,10 +51,10 @@ nameF.addEventListener('input', (value) => {
         nameF.classList.remove('is-valid');
     } else {
         nameF.classList.replace('is-invalid', 'is-valid');
-    }
+    } 
 })
 
-// Validar provincia - no se valida
+// Validar provincia - Escuchamos todos los cambios del select provincias
 provinciaF.addEventListener('change', () => {
     if (provinciaF.value === '0') {
         provinciaF.classList.add('is-invalid');
@@ -60,7 +62,7 @@ provinciaF.addEventListener('change', () => {
     } else {
         provinciaF.classList.add('is-valid');
         provinciaF.classList.remove('is-invalid'); 
-    }
+    } 
 }) 
 
 
@@ -71,21 +73,21 @@ emailF.addEventListener('input', (value) => {
         emailF.classList.remove('is-valid');
     } else {
         emailF.classList.replace('is-invalid', 'is-valid');
-    }
+    } 
 })
 
 // Validar password ( 1 mayuscula, 1 minuscula, 1 numero y 8 char min.)
 passwordF.addEventListener('input', (value) => {
-    if ((passwordF.value.length == '') | (validatePassword(passwordF.value))) {
+    if ((passwordF.value == '') | (validatePassword(passwordF.value))) {
         passwordF.classList.add('is-invalid');
         passwordF.classList.remove('is-valid');
     } else {
         passwordF.classList.replace('is-invalid', 'is-valid');
-    }
+    } 
 })
 
 // Validar confirmación password
-rPasswordF.addEventListener('change', (value) => {
+rPasswordF.addEventListener('input', (value) => {
     if (rPasswordF.value != passwordF.value) {
         rPasswordF.classList.add('is-invalid');
         rPasswordF.classList.remove('is-valid');
@@ -98,13 +100,12 @@ rPasswordF.addEventListener('change', (value) => {
 
 // Botón Submit - Registrar
 // =========================
-function validateRegister(event) {    
+function validateRegister(event) {  
     if (nameF.classList.contains('is-valid') &&
         provinciaF.classList.contains('is-valid') &&
         emailF.classList.contains('is-valid')  &&
         passwordF.classList.contains('is-valid') &&
         rPasswordF.classList.contains('is-valid')) {
-        //se cumple que todos los campos con requerimientos son validos.
         }
     else { 
         return false;
@@ -126,7 +127,7 @@ const passwordL = document.getElementById('loginPassword');
 
 // Validar email
 emailL.addEventListener('input', (value) => {
-    if ((emailL.value == '') | (validateEmail(emailL.value))) { //Llamamos a la funcion validateEmail()  de la libreria
+    if ((emailL.value == '') | (validateEmail(emailL.value))) { 
         emailL.classList.add('is-invalid');
         emailL.classList.remove('is-valid');
     } else {
@@ -137,7 +138,7 @@ emailL.addEventListener('input', (value) => {
 
 // Validar password ( 1 mayuscula, 1 minuscula, 1 numero y 8 char min.)
 passwordL.addEventListener('input', (value) => {
-    if ((passwordL.value == '') | (validatePassword(passwordL.value))) { //Se comprueba que el campo no este vacio.
+    if ((passwordL.value == '') | (validatePassword(passwordL.value))) { 
     passwordL.classList.add('is-invalid');
     passwordL.classList.remove('is-valid');
     } else {
@@ -147,7 +148,7 @@ passwordL.addEventListener('input', (value) => {
 
 // Botón Submit - Login
 // =========================
-function validateLogin(){  
+function validateLogin(){ 
     if (emailL.classList.contains('is-valid')  &&
         passwordL.classList.contains('is-valid')) {
 
@@ -189,7 +190,7 @@ function validateBuscar(){
 // === Libreria de validaciones ===
 // ================================
 
-//Email - Utilizamos expresiones regulares para comprobar que el email introducido es válido
+//Email 
 const validateEmail = (email) => {
     let invalid = true;
     const emailRegex = /^(([^<>()\[\]\\.,:\s@"]+(\.[^<>()\[\]\\.,:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -200,11 +201,14 @@ const validateEmail = (email) => {
     }else {
         console.log('email incorrecto');
     }
-    return invalid; //Devolvemos true o false si cumple o no la validación.
+    return invalid; 
 }
-//Password - Utilizamos expresiones regulares para obligar a que el password sea más seguro.
+
+// ===================== 
+//       LEVEL 2
+// ===================== 
+//Password - debe tener 1 mayúscula, 1 minúscula, 1 número y 8 carácteres cómo mínimo.
 const validatePassword = (password) => {
-    //Debe tener 1 mayúscula, 1 minúscula, 1 número y 8 carácteres cómo mínimo.
     let invalid = true;
     const passwordRegex = /(?=(.*[0-9]))((?=.*[A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z]))^.{8,}$/
     if(passwordRegex.test(password)) {
@@ -213,6 +217,5 @@ const validatePassword = (password) => {
     }else {
         console.log('password incorrecto')
     }
-    return invalid; //Devolvemos true o false si cumple o no la validación. 
 }
 
