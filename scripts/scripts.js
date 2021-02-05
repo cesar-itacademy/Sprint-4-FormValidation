@@ -1,5 +1,5 @@
 //SPRINT- 4 EJERCICIO DE VALIDACIÓN DE FORMULARIOS
-// LEVEL 1 + 2
+// LEVEL 3  JQUERY VALIDATION PLUGIN
 
 // =======================================
 // ===  Validacion formulario Registro ===       
@@ -53,7 +53,8 @@ nameF.addEventListener('input', (value) => {
         nameF.classList.remove('is-valid');
     } else {
         nameF.classList.replace('is-invalid', 'is-valid');
-    }//Asignamos la clase is-valid en función de si cumple o no la condición 
+    }
+
 })
 
 // Validar provincia - Escuchamos todos los cambios del select provincias
@@ -65,7 +66,8 @@ provinciaF.addEventListener('change', () => {
     } else {
         provinciaF.classList.add('is-valid');
         provinciaF.classList.remove('is-invalid'); 
-    }//Asignamos la clase is-valid en función de si cumple o no la condición 
+    }
+
 }) 
 
 
@@ -77,18 +79,18 @@ emailF.addEventListener('input', (value) => {
         emailF.classList.remove('is-valid');
     } else {
         emailF.classList.replace('is-invalid', 'is-valid');
-    }//Asignamos la clase is-valid en función de si cumple o no la condición 
+    }
 })
 
 // Validar password ( 1 mayuscula, 1 minuscula, 1 numero y 8 char min.)
 passwordF.addEventListener('input', (value) => {
     //Comprobamos que no está vacío y llamamos a la función de validación de la biblioteca
-    if ((passwordF.value.length == '') | (validatePassword(passwordF.value))) {
+    if ((passwordF.value == '') | (validatePassword(passwordF.value))) {
         passwordF.classList.add('is-invalid');
         passwordF.classList.remove('is-valid');
     } else {
         passwordF.classList.replace('is-invalid', 'is-valid');
-    }//Asignamos la clase is-valid en función de si cumple o no la condición 
+    }
 })
 
 // Validar confirmación password
@@ -99,7 +101,7 @@ rPasswordF.addEventListener('input', (value) => {
         rPasswordF.classList.remove('is-valid');
     } else {
         rPasswordF.classList.replace('is-invalid', 'is-valid');
-    }//Asignamos la clase is-valid en función de si cumple o no la condición 
+    }
 })
 
 
@@ -112,7 +114,7 @@ function validateRegister(event) {  //Comprobar que todos los campos tienen la c
         emailF.classList.contains('is-valid')  &&
         passwordF.classList.contains('is-valid') &&
         rPasswordF.classList.contains('is-valid')) {
-        //se cumple que todos los campos con requerimientos son validos.
+        
         }
     else { 
         return false;
@@ -122,50 +124,7 @@ function validateRegister(event) {  //Comprobar que todos los campos tienen la c
 
 
 
-// =======================================
-// ===  Validacion de formulario Login ===       
-// =======================================
 
-// Seleccionamos todos los campos del forumulario Login
-//=====================================================
-const emailL = document.getElementById('loginEmail');
-const passwordL = document.getElementById('loginPassword');
-
-
-// Validar email
-emailL.addEventListener('input', (value) => {
-    //Llamamos a la funcion validateEmail()  de la libreria
-    if ((emailL.value == '') | (validateEmail(emailL.value))) { 
-        emailL.classList.add('is-invalid');
-        emailL.classList.remove('is-valid');
-    } else {
-        emailL.classList.replace('is-invalid', 'is-valid');
-    }
-})
-
-
-// Validar password ( 1 mayuscula, 1 minuscula, 1 numero y 8 char min.)
-passwordL.addEventListener('input', (value) => {
-    //Comprobar que no esté vacío y validar con la función validatePassword de la biblioteca
-    if ((passwordL.value == '') | (validatePassword(passwordL.value))) { 
-    passwordL.classList.add('is-invalid');
-    passwordL.classList.remove('is-valid');
-    } else {
-        passwordL.classList.replace('is-invalid', 'is-valid');
-    }
-})
-
-// Botón Submit - Login
-// =========================
-function validateLogin(){ 
-    //Comprobamos que los campos tengan la clase is-valid para hacer el submit 
-    if (emailL.classList.contains('is-valid')  &&
-        passwordL.classList.contains('is-valid')) {
-
-    }else { 
-        return false;
-    }
-}
 
 // =======================================
 // ===  Validacion de formulario Buscar ==       
@@ -212,7 +171,7 @@ const validateEmail = (email) => {
     }else {
         console.log('email incorrecto');
     }
-    return invalid; //Devolvemos true o false si cumple o no la validación.
+    return invalid; 
 }
 
 // ===================== 
@@ -229,6 +188,6 @@ const validatePassword = (password) => {
     }else {
         console.log('password incorrecto')
     }
-    return invalid; //Devolvemos true o false si cumple o no la validación. 
+    return invalid;  
 }
 

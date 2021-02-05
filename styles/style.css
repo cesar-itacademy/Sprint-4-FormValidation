@@ -47,6 +47,16 @@ h2::after {
 }
 
 /*//////////////////////
+       Formularios 
+//////////////////////*/
+
+/* Error de JQuery Validate */
+.error {
+	color: #F00;
+	background-color: #fff;
+}
+
+/*//////////////////////
         Cabecera
 //////////////////////*/
 

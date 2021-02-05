@@ -7,6 +7,7 @@
 
     <!-- Style --->
     <link rel="stylesheet" href="styles/style.css">
+    
 
     <!-- Bootstrap CSS --->
     <link rel="stylesheet" href="styles/bootstrap.min.css"> 
@@ -46,7 +47,7 @@
                             <li class="nav-item"><a class="nav-link" href="#">CARRITO</a></li>  
                         </ul>
 
-<!------------ Formulario de busqueda  ------------->
+                    <!------------ Formulario de busqueda  ------------->
 
                         <form class="form-inline my-2 my-lg-0" method="POST" action="./alta.html" onsubmit="return validateBuscar()"> <input class="form-control mr-sm-2" type="text" placeholder="Encuentra tu taza!" id="buscarB"> 
                             <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button> 
@@ -67,7 +68,7 @@
                 </nav>
             </div>
 
-<!---------------------- Ventana Modal Formulario de Registro ---------------->
+            <!---------------------- Ventana Modal Formulario de Registro ---------------->
 
             <div class="modal fade" id="registrar">
                 <div class="modal-dialog">
@@ -157,34 +158,41 @@
                 </div>
             </div>
 
-<!---------------------- Ventana Modal del Formulario de  Login --------------------->
+<!----------------------JQUERY Validation Ventana Modal del Formulario de  Login --------------------->
 
             <div class="modal fade" id="login">
                 <div class="modal-dialog">
                   <div class="modal-content">
-                    <form novalidate method="POST" action="./acceder.html" onsubmit="return validateLogin()" name="rform"> 
-                        <!-- header del formulario de registro -->
+                
+                    <!-- header del formulario de login -->
+
+                    <form class="loginForm" name="loginForm" id="loginForm" method="POST" action="./acceso.html">  
                         <div class="modal-header text-center">
                           <h3 class="modal-title w-100 dark-grey-text font-weight-bold">Login</h3>
                           <button type="button" class="close" data-dismiss="modal" aria-lable="close">&times;</button>
                         </div>
-                        <!-- Formulario campo email  -->
+                        
                         <div class="modal-body mx-4">
-                          <div class="md-form">
-
-                                <input type="email" class="form-control" id="loginEmail">
-                                <label for="loginEmail"class='form-label'>Email</label>
+                          <div class="md-form  form-group">
+                                <!-- Formulario campo email  -->
+                                <i class="fa fa-user prefix grey-text"></i>
+                                <label for='loginEmail' class='form-label'>Email</label> 
+                                <input type="email" class="form-control" name="loginEmail" id="loginEmail" required/>
+                                
                           </div>
+                          
                           <!-- Formulario campo password -->
-                          <div class="md-form">
-
-                                <input type="password" class="form-control" id="loginPassword">
-                                <label for='loginPassword'class='form-label'>Contraseña</label>
+                          <div class="md-form form-group">
+                                <i class="fa fa-lock prefix grey-text"></i>
+                                <label for='loginPassword'class='form-label'>Password</label> 
+                                <input type="password" class='form-control form-group' name="loginPassword" id="loginPassword">
                           </div>
+
                           <!-- Pie de formulario con boton login -->
                             <div class="text-center mb-3">
-                                <button type="submit" class="btn btn-primary btn-block z-depth-1a">Acceder</button>
+                                <button type="submit" name="acceder" class="btn btn-success">Acceder</button>
                             </div>
+
                         </div>
                     </form>
                   </div>
@@ -812,15 +820,21 @@
     </footer>
     <!---------------------- SCRIPTS ---------------------->
 
-    <!--  Custom script -->
-    <script src="/scripts/scripts.js"></script>
-
+    
     <!--  jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>    
     <!--  Script archivos local jQuery and Bootstrap Bundle (includes Popper)
     <script src="scripts/js/bootstrap.bundle.min.js"></script>
     <script src="scripts/js/jquery-3.2.1.slim.min.js"></script> -->
+
+    <!--  JQUERY Validation -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/additional-methods.js"></script>
+    <script src="./scripts/formJquery.js"></script>
+    <!--  Custom script -->
+    <script src="./scripts/scripts.js"></script>
+    
 
 </body>
 </html>
