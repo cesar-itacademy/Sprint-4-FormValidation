@@ -84,6 +84,7 @@ function cargarProvincias() {
 
 // Rutina para agregar opciones a un <select> una vez le hemos pasados el array de elementos y el nombre en el DOM.
 function addOptions(domElement, array) {
+
   const select = document.getElementsByName(domElement)[0];
   // Recorremos la array de <select> insertando los elementos del array como options
   for (value in array) {
@@ -97,6 +98,7 @@ function addOptions(domElement, array) {
 // ====================================
 
 // Validar Nombre
+
 nameF.addEventListener("input", (value) => {
   //Comprobamos que el campo no esté vacío y el nombre tenga más de un carácter
   if (nameF.value.length <= 1) {
@@ -166,6 +168,7 @@ function validateRegister(event) {
   } else {
     return false;
   }
+
 }
 
 // =======================================
@@ -188,20 +191,22 @@ buscarB.addEventListener("input", (value) => {
 
 // Boton Submit - Buscar
 // =====================
+
 function validateBuscar() {
   //Comprobamos que los campos tengan la clase is-valid para hacer el submit
   if (buscarB.classList.contains("is-valid")) {
   } else {
     return false;
   }
+
 }
 
 // ================================
 // === Libreria de validaciones ===
 // ================================
 
-//Email - Utilizamos expresiones regulares para comprobar que el email introducido es válido
-const validateEmail = (email) => {
+//Email 
+
   let invalid = true;
   const emailRegex = /^(([^<>()\[\]\\.,:\s@"]+(\.[^<>()\[\]\\.,:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -214,8 +219,10 @@ const validateEmail = (email) => {
   return invalid;
 };
 
+
 // =====================
 //       LEVEL 2
+
 // =====================
 //Password - Utilizamos expresiones regulares para obligar a que el password sea más seguro.
 const validatePassword = (password) => {
@@ -230,3 +237,4 @@ const validatePassword = (password) => {
   }
   return invalid;
 };
+
